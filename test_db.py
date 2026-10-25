@@ -1,11 +1,12 @@
 
+import os
 import mysql.connector
 
 try:
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="123456",
+        password=os.environ.get("MYSQL_PASSWORD"),
         database="trustvault_db"
     )
 

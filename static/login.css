@@ -1,0 +1,494 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body.tv-login {
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+    background: #f8f7f4;
+    color: #202b27;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.login-layout {
+    width: 100%;
+    max-width: none;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1.08fr 1fr;
+    overflow: hidden;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.brand-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 34px 44px 24px;
+    background: #0e1513;
+    color: #f4f1ea;
+    overflow: hidden;
+    border-radius: 0;
+    min-width: 0;
+}
+
+.brand-panel::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border: 1px solid #c9a24b55;
+    border-radius: 50%;
+    top: -85px;
+    right: -110px;
+    box-shadow: 0 0 0 40px #c9a24b08,
+                0 0 0 80px #c9a24b08;
+    pointer-events: none;
+}
+
+.brand {
+    font: bold 43px Georgia, serif;
+    position: relative;
+    z-index: 1;
+}
+
+.brand span,
+.brand-content h1 span {
+    color: #c9a24b;
+}
+
+.tagline {
+    color: #9eaaa5;
+    font-size: 19px;
+    margin: 9px 0 0;
+}
+
+.brand-content {
+    margin-top: clamp(30px, 5vh, 52px);
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow {
+    color: #98751f;
+    letter-spacing: 3.5px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.brand-content .eyebrow {
+    color: #c9a24b;
+}
+
+.brand-content h1 {
+    max-width: 570px;
+    font: 47px/1.12 Georgia, serif;
+    margin: 18px 0;
+}
+
+.description {
+    color: #bdc6c1;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 570px;
+    margin: 16px 0 20px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    margin-top: 17px;
+}
+
+.feature-icon {
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border: 1px solid #43544c;
+    border-radius: 15px;
+    color: #c9a24b;
+    background: #15211c;
+    font-size: 22px;
+}
+
+.feature strong {
+    font-size: 16px;
+}
+
+.feature p {
+    margin: 4px 0 0;
+    color: #9eaaa5;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.footer-note {
+    margin-top: auto;
+    padding-top: 18px;
+    color: #84918b;
+    letter-spacing: 2.5px;
+    font-size: 12px;
+}
+
+.form-panel {
+    background: #f4f1ea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 36px;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 0;
+    overflow-y: auto;
+}
+
+.form-content {
+    width: 100%;
+    max-width: 500px;
+    margin: auto 0;
+}
+
+.tv-mark {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 15px;
+    background: #f2e6c5;
+    color: #66501a;
+    font: 21px Georgia, serif;
+    margin-bottom: 13px;
+}
+
+.form-content .eyebrow {
+    margin: 7px 0;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.form-content h2 {
+    font: 40px Georgia, serif;
+    margin: 7px 0;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #68736f;
+    margin: 8px 0 17px;
+}
+
+.form-content form > label,
+.password-heading label {
+    display: block;
+    color: #606d68;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.form-content input[type="email"],
+.password-box input {
+    width: 100%;
+    min-width: 0;
+    height: 46px;
+    border: 1px solid #dededb;
+    border-radius: 10px;
+    padding: 0 15px;
+    background: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+.form-content input:focus {
+    border-color: #c9a24b;
+    box-shadow: 0 0 0 3px #c9a24b22;
+}
+
+.password-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.password-heading label {
+    margin-bottom: 6px;
+}
+
+.password-heading a {
+    color: #876719;
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.password-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dededb;
+    border-radius: 10px;
+    background: #fff;
+    padding-right: 12px;
+    min-width: 0;
+}
+
+.password-box input {
+    border: none;
+    box-shadow: none;
+}
+
+.password-box button {
+    flex-shrink: 0;
+    background: transparent;
+    border: 0;
+    color: #876719;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin: 12px 0 14px;
+    color: #606d68;
+    font-size: 14px;
+}
+
+.remember input {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    accent-color: #a47d25;
+}
+
+.sign-in-button,
+.create-account {
+    width: 100%;
+    min-height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sign-in-button {
+    border: none;
+    background: #c9a24b;
+    color: #151712;
+}
+
+.sign-in-button:hover {
+    background: #b9923e;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 12px 0;
+    color: #7b827e;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: #d5cdbb;
+}
+
+.create-account {
+    border: 1px solid #b8aa8c;
+    color: #202b27;
+    background: #fbfaf6;
+}
+
+.create-account:hover {
+    background: #eee8d9;
+}
+
+.privacy-note {
+    background: #eae5d8;
+    border-radius: 12px;
+    padding: 11px 13px;
+    margin-top: 13px;
+    line-height: 1.45;
+    font-size: 13px;
+}
+
+.privacy-note p {
+    color: #68736f;
+    margin: 3px 0 0;
+}
+
+.notice {
+    background: #f4e7c9;
+    color: #674d13;
+    border-radius: 9px;
+    padding: 9px 11px;
+    margin-bottom: 12px;
+    font-size: 13px;
+}
+
+/* Short laptop screens */
+@media (min-width: 901px) and (max-height: 800px) {
+    body.tv-login {
+        padding: 0;
+    }
+
+    .login-layout {
+        height: 100vh;
+        min-height: 100vh;
+    }
+
+    .brand-panel {
+        padding: 24px 36px 16px;
+    }
+
+    .brand {
+        font-size: 39px;
+    }
+
+    .tagline {
+        font-size: 17px;
+    }
+
+    .brand-content {
+        margin-top: 24px;
+    }
+
+    .brand-content h1 {
+        font-size: 41px;
+        margin: 12px 0;
+    }
+
+    .description {
+        font-size: 15px;
+        line-height: 1.55;
+        margin: 10px 0 14px;
+    }
+
+    .feature {
+        margin-top: 12px;
+    }
+
+    .feature-icon {
+        width: 46px;
+        height: 46px;
+    }
+
+    .footer-note {
+        padding-top: 10px;
+    }
+
+    .form-panel {
+        padding: 14px 28px;
+    }
+
+    .tv-mark {
+        width: 43px;
+        height: 43px;
+        margin-bottom: 8px;
+    }
+
+    .form-content h2 {
+        font-size: 34px;
+    }
+
+    .subtitle {
+        margin: 5px 0 11px;
+    }
+
+    .form-content input[type="email"],
+    .password-box input {
+        height: 41px;
+    }
+
+    .password-heading {
+        margin-top: 9px;
+    }
+
+    .remember {
+        margin: 9px 0 10px;
+    }
+
+    .sign-in-button,
+    .create-account {
+        min-height: 42px;
+    }
+
+    .divider {
+        margin: 9px 0;
+    }
+
+    .privacy-note {
+        margin-top: 9px;
+        padding: 8px 11px;
+    }
+}
+
+/* Mobile and tablet */
+@media (max-width: 900px) {
+    body.tv-login {
+        padding: 0;
+    }
+
+    .login-layout {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        grid-template-columns: 1fr;
+        border: none;
+        border-radius: 0;
+    }
+
+    .brand-panel {
+        padding: 30px 28px;
+    }
+
+    .brand {
+        font-size: 38px;
+    }
+
+    .brand-content {
+        margin-top: 28px;
+    }
+
+    .brand-content h1 {
+        font-size: 39px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .footer-note {
+        margin-top: 28px;
+    }
+
+    .form-panel {
+        padding: 28px 24px;
+        overflow-y: visible;
+    }
+
+    .form-content h2 {
+        font-size: 36px;
+    }
+}

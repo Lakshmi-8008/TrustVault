@@ -1,0 +1,176 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Documents | TrustVault{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">YOUR FILES</span>
+    <h1>My Documents</h1>
+    <p>View your documents and manage access according to your role.</p>
+</section>
+
+<section class="panel">
+    <div class="section-heading">
+        <h2>My Documents & Shared Documents</h2>
+
+        {% if session.get('user_role') in ['admin', 'owner'] %}
+            <a class="button" href="{{ url_for('dashboard') }}">
+                ＋ Upload
+            </a>
+        {% endif %}
+    </div>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    {% if documents %}
+        <div class="document-list">
+            {% for doc in documents %}
+                <article class="document-card">
+                    <div class="document-card-header">
+                        <div>
+                            <h3>{{ doc.filename }}</h3>
+
+                            <p class="muted">
+                                Document ID: {{ doc.id }}
+                            </p>
+
+                            <p class="muted">
+                                Uploaded: {{ doc.uploaded_at }}
+                            </p>
+
+                            {% if doc.current_permission != 'owner' %}
+                                <p class="muted">
+                                    Owner: {{ doc.owner_name }}
+                                </p>
+                            {% endif %}
+                        </div>
+
+                        <span class="permission-badge">
+                            {{ doc.current_permission|title }}
+                        </span>
+                    </div>
+
+                    <div class="document-actions">
+                        <a class="button"
+                           href="{{ url_for('preview_document',
+                                            document_id=doc.id) }}">
+                            View
+                        </a>
+
+                        {% if doc.current_permission in ['owner', 'download'] %}
+                            <a class="button"
+                               href="{{ url_for('view_document',
+                                                document_id=doc.id,
+                                                download=1) }}">
+                                Download
+                            </a>
+                        {% endif %}
+                    </div>
+
+                    {% if doc.current_permission == 'owner'
+                          and session.get('user_role') == 'owner' %}
+
+                        <div class="share-form">
+                            <h4>Share This Document</h4>
+
+                            <form action="{{ url_for('grant_access',
+                                                     document_id=doc.id) }}"
+                                  method="POST"
+                                  class="share-controls">
+
+                                <input type="email"
+                                       name="email"
+                                       placeholder="Enter recipient email"
+                                       aria-label="Recipient email"
+                                       required>
+
+                                <select name="permission"
+                                        aria-label="Permission"
+                                        required>
+                                    <option value="view">View Only</option>
+                                    <option value="download">
+                                        View and Download
+                                    </option>
+                                </select>
+
+                                <button class="button" type="submit">
+                                    Share Document
+                                </button>
+                            </form>
+
+                            <hr>
+                            <h4>Shared With</h4>
+
+                            {% set recipients = (shared_permissions|default({})).get(doc.id, []) %}
+
+                            {% if recipients %}
+                                {% for recipient in recipients %}
+                                    <div class="share-form">
+                                        <p>
+                                            <strong>
+                                                {{ recipient.recipient_name or 'User' }}
+                                            </strong>
+                                        </p>
+
+                                        <p>
+                                            Email: {{ recipient.recipient_email }}
+                                        </p>
+
+                                        <p>
+                                            Permission:
+                                            {% if recipient.permission == 'view' %}
+                                                View Only
+                                            {% elif recipient.permission == 'download' %}
+                                                View and Download
+                                            {% else %}
+                                                {{ recipient.permission|title }}
+                                            {% endif %}
+                                        </p>
+
+                                        <form
+                                            action="{{ url_for(
+                                                'revoke_access',
+                                                permission_id=recipient.permission_id
+                                            ) }}"
+                                            method="POST"
+                                            onsubmit="return confirm('Revoke this user access?');"
+                                        >
+                                            <button class="button"
+                                                    type="submit">
+                                                Revoke Access
+                                            </button>
+                                        </form>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <p class="muted">
+                                    This document has not been shared with anyone yet.
+                                </p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </article>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="empty-state">
+            <h3>No documents found</h3>
+            <p>
+                Upload a document or ask another registered user
+                to share one with you.
+            </p>
+
+            {% if session.get('user_role') in ['admin', 'owner'] %}
+                <a class="button" href="{{ url_for('dashboard') }}">
+                    Upload Document
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
+```

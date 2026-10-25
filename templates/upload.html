@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Upload | TrustVault{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <span class="eyebrow">DOCUMENT MANAGEMENT</span>
+    <h1>Upload Document</h1>
+    <p>Securely upload a document to your TrustVault.</p>
+</section>
+
+<section class="panel upload-panel">
+    <h2>Select a document</h2>
+    <p class="muted">Supported formats: PDF, DOCX and TXT. Maximum size: 10 MB.</p>
+
+    <form action="{{ url_for('upload_document') }}"
+          method="POST" enctype="multipart/form-data">
+
+        <label class="upload-dropzone">
+            <span class="upload-icon">＋</span>
+            <strong>Select a document (PDF, DOCX, TXT)</strong>
+            <span class="muted">Choose a file from your computer</span>
+            <input type="file" name="document"
+                   accept=".pdf,.docx,.txt" required>
+        </label>
+
+        <button type="submit" class="button upload-button">
+            Upload Document
+        </button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,483 @@
+
+:root {
+    --ink: #0E1513;
+    --cream: #F4F1EA;
+    --gold: #C9A24B;
+    --green: #2FBF8F;
+    --muted: #5E6B67;
+    --white: #FFFFFF;
+    --border: #DEDCD3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.tv-auth-page {
+    min-height: 100vh;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+}
+
+.tv-auth-layout {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    min-height: 100vh;
+}
+
+/* LEFT BRAND PANEL */
+
+.tv-brand-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 38px 48px 28px;
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+}
+
+.tv-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+}
+
+.tv-brand-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-family: "Fraunces", serif;
+    font-size: 23px;
+}
+
+.tv-brand-content {
+    max-width: 470px;
+    margin: 30px auto;
+    width: 100%;
+}
+
+.tv-vault-art {
+    position: relative;
+    width: 225px;
+    height: 225px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tv-ring {
+    position: absolute;
+    border: 1px solid rgba(201, 162, 75, 0.5);
+    border-radius: 50%;
+}
+
+.tv-ring-one {
+    width: 220px;
+    height: 220px;
+}
+
+.tv-ring-two {
+    width: 178px;
+    height: 178px;
+}
+
+.tv-ring-three {
+    width: 136px;
+    height: 136px;
+    border-color: rgba(201, 162, 75, 0.8);
+}
+
+.tv-lock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+}
+
+.tv-lock-top {
+    width: 43px;
+    height: 43px;
+    border: 4px solid var(--gold);
+    border-bottom: 0;
+    border-radius: 24px 24px 0 0;
+}
+
+.tv-lock-body {
+    width: 65px;
+    height: 52px;
+    margin-top: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--gold);
+    background: var(--ink);
+}
+
+.tv-lock-body span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+}
+
+.tv-lock-body span::after {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 12px;
+    margin: 6px 2px;
+    background: var(--gold);
+}
+
+.tv-eyebrow,
+.tv-form-eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.tv-eyebrow {
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.tv-brand-content h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(34px, 3.2vw, 49px);
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: -1.3px;
+    text-align: center;
+}
+
+.tv-brand-content h1 span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.tv-brand-description {
+    max-width: 365px;
+    margin: 22px auto 0;
+    color: #A8B0AA;
+    font-size: 13px;
+    line-height: 1.9;
+    text-align: center;
+}
+
+.tv-brand-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: #A8B0AA;
+    font-size: 10px;
+}
+
+.tv-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.tv-footer-separator {
+    color: var(--gold);
+}
+
+/* RIGHT SIGNUP PANEL */
+
+.tv-form-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 42px 28px 65px;
+    background: var(--cream);
+}
+
+.tv-form-wrapper {
+    width: 100%;
+    max-width: 390px;
+    margin: auto 0;
+}
+
+.tv-mobile-brand {
+    display: none;
+}
+
+.tv-form-eyebrow {
+    margin-bottom: 14px;
+}
+
+.tv-form-wrapper h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: clamp(30px, 3vw, 39px);
+    font-weight: 400;
+    letter-spacing: -1px;
+    line-height: 1.2;
+}
+
+.tv-form-subtitle {
+    margin-top: 12px;
+    margin-bottom: 28px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.tv-message {
+    padding: 12px 14px;
+    margin-bottom: 18px;
+    border: 1px solid #D8B5A9;
+    background: #F9EAE5;
+    color: #853D2B;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.tv-field {
+    margin-bottom: 17px;
+}
+
+.tv-field label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.tv-field input {
+    width: 100%;
+    height: 46px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.tv-field input::placeholder {
+    color: #969E99;
+}
+
+.tv-field input:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.12);
+}
+
+.tv-password-wrap {
+    position: relative;
+}
+
+.tv-password-wrap input {
+    padding-right: 65px;
+}
+
+.tv-toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: "DM Sans", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tv-toggle-password:hover {
+    color: var(--ink);
+}
+
+.tv-field-hint {
+    margin-top: 7px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.tv-password-error {
+    margin-top: 6px;
+    color: #B43C30;
+    font-size: 11px;
+}
+
+.tv-submit-button {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: var(--gold);
+    color: var(--ink);
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.tv-submit-button span {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.tv-submit-button:hover {
+    background: #D8B45F;
+    transform: translateY(-1px);
+}
+
+.tv-signin-text {
+    margin-top: 24px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+.tv-signin-text a {
+    margin-left: 4px;
+    color: var(--ink);
+    font-weight: 700;
+    text-decoration-color: var(--gold);
+    text-underline-offset: 4px;
+}
+
+.tv-signin-text a:hover {
+    color: #8C6B24;
+}
+
+.tv-security-note {
+    margin-top: 29px;
+    color: var(--muted);
+    font-size: 10px;
+    text-align: center;
+}
+
+.tv-security-note span {
+    margin-right: 5px;
+    color: var(--gold);
+}
+
+.tv-copyright {
+    position: absolute;
+    bottom: 23px;
+    left: 20px;
+    right: 20px;
+    color: #8B938D;
+    font-size: 10px;
+    text-align: center;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 850px) {
+    .tv-auth-layout {
+        grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .tv-brand-panel {
+        padding: 30px 24px 24px;
+    }
+
+    .tv-vault-art {
+        width: 180px;
+        height: 180px;
+    }
+
+    .tv-ring-one {
+        width: 180px;
+        height: 180px;
+    }
+
+    .tv-ring-two {
+        width: 145px;
+        height: 145px;
+    }
+
+    .tv-ring-three {
+        width: 110px;
+        height: 110px;
+    }
+
+    .tv-brand-content h1 {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 650px) {
+    .tv-auth-layout {
+        display: block;
+    }
+
+    .tv-brand-panel {
+        display: none;
+    }
+
+    .tv-form-panel {
+        min-height: 100vh;
+        padding: 28px 23px 65px;
+    }
+
+    .tv-mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        align-self: flex-start;
+        margin-bottom: 42px;
+        font-size: 19px;
+        font-weight: 700;
+    }
+
+    .tv-form-wrapper {
+        max-width: 430px;
+    }
+
+    .tv-form-wrapper h2 {
+        font-size: 34px;
+    }
+
+    .tv-copyright {
+        bottom: 18px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tv-form-panel {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .tv-form-wrapper h2 {
+        font-size: 29px;
+    }
+}

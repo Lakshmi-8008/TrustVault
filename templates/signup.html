@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account | TrustVault</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='signup.css') }}">
+</head>
+
+<body class="tv-auth-page">
+
+    <main class="tv-auth-layout">
+
+        <!-- LEFT BRAND PANEL -->
+        <section class="tv-brand-panel">
+
+            <a href="/" class="tv-brand">
+                <span class="tv-brand-icon">T</span>
+                <span>TrustVault</span>
+            </a>
+
+            <div class="tv-brand-content">
+
+                <div class="tv-vault-art">
+                    <div class="tv-ring tv-ring-one"></div>
+                    <div class="tv-ring tv-ring-two"></div>
+                    <div class="tv-ring tv-ring-three"></div>
+
+                    <div class="tv-lock">
+                        <div class="tv-lock-top"></div>
+                        <div class="tv-lock-body">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="tv-eyebrow">YOUR DOCUMENTS. YOUR CONTROL.</p>
+
+                <h1>Your files deserve<br>
+                    <span>a safer place.</span>
+                </h1>
+
+                <p class="tv-brand-description">
+                    Create your secure space to store, share, and
+                    manage important documents with confidence.
+                </p>
+
+            </div>
+
+            <div class="tv-brand-footer">
+                <span class="tv-status-dot"></span>
+                Secure document sharing
+                <span class="tv-footer-separator">•</span>
+                Built with Trust
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIGNUP PANEL -->
+        <section class="tv-form-panel">
+
+            <div class="tv-mobile-brand">
+                <span class="tv-brand-icon">T</span>
+                <span>TrustVault</span>
+            </div>
+
+            <div class="tv-form-wrapper">
+
+                <p class="tv-form-eyebrow">GET STARTED</p>
+
+                <h2>Create your account</h2>
+
+                <p class="tv-form-subtitle">
+                    Join TrustVault and keep your documents organized.
+                </p>
+
+                {% if message %}
+                    <div class="tv-message" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+
+                <form action="{{ url_for('signup') }}"
+                      method="POST"
+                      id="signupForm">
+
+                    <div class="tv-field">
+                        <label for="name">Full name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="tv-field">
+                        <label for="email">Email address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            required>
+                    </div>
+
+                    <div class="tv-field">
+                        <label for="password">Password</label>
+
+                        <div class="tv-password-wrap">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required>
+
+                            <button type="button"
+                                    class="tv-toggle-password"
+                                    data-target="password">
+                                Show
+                            </button>
+                        </div>
+
+                        <p class="tv-field-hint">
+                            Use at least 8 characters.
+                        </p>
+                    </div>
+
+                    <div class="tv-field">
+                        <label for="confirm_password">
+                            Confirm password
+                        </label>
+
+                        <div class="tv-password-wrap">
+                            <input
+                                type="password"
+                                id="confirm_password"
+                                name="confirm_password"
+                                placeholder="Enter your password again"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required>
+
+                            <button type="button"
+                                    class="tv-toggle-password"
+                                    data-target="confirm_password">
+                                Show
+                            </button>
+                        </div>
+
+                        <p id="passwordError"
+                           class="tv-password-error"
+                           aria-live="polite"></p>
+                    </div>
+
+                    <button type="submit" class="tv-submit-button">
+                        Create Account
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                </form>
+
+                <p class="tv-signin-text">
+                    Already have an account?
+                    
+                    <a href="{{ url_for('home') }}">Sign in</a>
+
+                </p>
+
+                <p class="tv-security-note">
+                    <span>◆</span>
+                    Your documents deserve privacy and care.
+                </p>
+
+            </div>
+
+            <div class="tv-copyright">
+                © 2026 TrustVault. All rights reserved.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+        // Show or hide password
+        document.querySelectorAll(".tv-toggle-password").forEach(button => {
+            button.addEventListener("click", function () {
+                const input = document.getElementById(this.dataset.target);
+
+                if (input.type === "password") {
+                    input.type = "text";
+                    this.textContent = "Hide";
+                } else {
+                    input.type = "password";
+                    this.textContent = "Show";
+                }
+            });
+        });
+
+        // Check whether passwords match
+        const signupForm = document.getElementById("signupForm");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirm_password");
+        const passwordError = document.getElementById("passwordError");
+
+        signupForm.addEventListener("submit", function (event) {
+            if (password.value !== confirmPassword.value) {
+                event.preventDefault();
+                passwordError.textContent = "Passwords do not match.";
+                confirmPassword.focus();
+            } else {
+                passwordError.textContent = "";
+            }
+        });
+
+        confirmPassword.addEventListener("input", function () {
+            passwordError.textContent = "";
+        });
+    </script>
+
+</body>
+</html>

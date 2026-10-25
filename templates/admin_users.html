@@ -1,0 +1,60 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Manage Users | TrustVault{% endblock %}
+
+{% block content %}
+<section class="welcome-card">
+    <h1>Manage Users</h1>
+    <p>Registered TrustVault users and their roles.</p>
+</section>
+
+<section class="panel">
+    <h2>Registered Users</h2>
+
+    <p>
+        <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    </p>
+
+    {% if users %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Registered At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+    {% if user.id == session.get('user_id') %}
+        {{ user.role|title }} (You)
+    {% else %}
+        <form method="POST"
+              action="{{ url_for('update_user_role', user_id=user.id) }}">
+            <select name="role" required>
+                <option value="admin" {% if user.role == 'admin' %}selected{% endif %}>Admin</option>
+                <option value="owner" {% if user.role == 'owner' %}selected{% endif %}>Owner</option>
+                <option value="viewer" {% if user.role == 'viewer' %}selected{% endif %}>Viewer</option>
+            </select>
+            <button type="submit">Update</button>
+        </form>
+    {% endif %}
+</td>
+                <td>{{ user.created_at }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No registered users found.</p>
+    {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,51 @@
+
+<aside class="sidebar">
+    <div class="brand">
+        <span class="brand-icon">●</span>
+        <span>TrustVault</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <!-- Dashboard -->
+        <a href="{{ url_for('dashboard') }}"
+           class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}">
+            <span class="nav-icon">▦</span>
+            Dashboard
+        </a>
+
+        <!-- Upload -->
+        <a href="{{ url_for('dashboard') }}"
+           class="nav-link {% if request.endpoint in ['upload_page', 'upload_document'] %}active{% endif %}">
+            <span class="nav-icon">□</span>
+            Upload
+        </a>
+
+        <!-- My Documents -->
+        <a href="{{ url_for('my_documents') }}"
+           class="nav-link {% if request.endpoint == 'my_documents' %}active{% endif %}">
+            <span class="nav-icon">▤</span>
+            Documents
+        </a>
+
+        <!-- Shared Access -->
+        <a href="{{ url_for('shared_access') }}"
+           class="nav-link {% if request.endpoint == 'shared_access' %}active{% endif %}">
+            <span class="nav-icon">♧</span>
+            Shared access
+        </a>
+
+        <!-- Audit Logs -->
+        <a href="{{ url_for('audit_logs') }}"
+           class="nav-link {% if request.endpoint == 'audit_logs' %}active{% endif %}">
+            <span class="nav-icon">▥</span>
+            Audit Logs
+        </a>
+
+        <!-- Logout -->
+        <a href="{{ url_for('logout') }}"
+           class="nav-link logout-link">
+            <span class="nav-icon">↪</span>
+            Logout
+        </a>
+    </nav>
+</aside>
